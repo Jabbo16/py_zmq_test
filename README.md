@@ -1,6 +1,6 @@
 # py_zmq_test
 This is a simple test on how to implement zmq in Kubernetes clusters.
-We use kind for running local Kubernetes clusters using Docker containers.
+We use [URL/kind](https://kind.sigs.k8s.io/docs/user/quick-start/) for running local Kubernetes clusters using Docker containers.
 
 How to use this repo:
 
