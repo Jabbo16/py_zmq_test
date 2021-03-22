@@ -24,6 +24,23 @@ Create the metallb namespace
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/master/manifests/namespace.yaml
 ```
 
+Create the memberlist secrets 
+
+```
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)" 
+```
+
+Apply metallb manifest
+
+```
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/master/manifests/metallb.yaml
+```
+
+Check address pool used by loadbalancers
+```
+docker network inspect -f '{{.IPAM.Config}}' kind
+```
+
 4. use service to expose the application
 ```
 kubectl apply -f zmq_service.yaml
