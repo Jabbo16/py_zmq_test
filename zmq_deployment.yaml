@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zmq-deployment-pub
+  labels:
+    app: zmq_pub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zmq_pub
+  template:
+    metadata:
+      labels:
+        app: zmq_pub
+    spec:
+      containers:
+      - name: zmq-pub
+        image: docker.io/eabsics/5g-dive:pub_zmq_client
+        args: ["sleep", "infinity"]
+        ports:
+        - containerPort: 801
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zmq-deployment-sub
+  labels:
+    app: zmq_sub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zmq_sub
+  template:
+    metadata:
+      labels:
+        app: zmq_sub
+    spec:
+      containers:
+      - name: zmq-sub
+        image: docker.io/eabsics/5g-dive:sub_zmq_server
+        args: ["sleep", "infinity"]
+        ports:
+        - containerPort: 802
+   
