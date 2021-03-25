@@ -9,9 +9,8 @@ spec:
     app: zmq_sub
   type: LoadBalancer
   externalIPs:
-  - 172.21.255.200
+    - 172.18.255.200
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 802
-      protocol: TCP
+      port: 802
+      nodePort: 30000
