@@ -7,9 +7,10 @@ metadata:
 spec:
   selector:
     app: zmq_sub
-  type: NodePort
+  type: LoadBalancer
+  externalIPs:
+    - 172.18.255.200
   ports:
     - protocol: TCP
-      targetPort: 802
       port: 802
       nodePort: 30000
